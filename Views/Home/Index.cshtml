@@ -1,0 +1,35 @@
+<!-- Установка контроллера -->
+<body ng-controller="storeCtrl">
+    <h2>Товары</h2>
+    <table>
+            <tbody>
+                <!-- Перечисление товаров -->
+                <tr data-ng-repeat="product in getProducts()">
+                    <td>{{product.name}}</td><td>{{product.price}}</td><td>{{product.currency}}</td>
+                    <td><a href="javascript:void(0);" ng-click="addToBasket($index)">Добавить в корзину</a></td>
+                    <td><a href="javascript:void(0);" ng-click="removeFromBasket($index)" ng-if="isInBasket($index)">Удалить из корзины</a></td>
+                </tr>
+            </tbody>
+    </table>
+    <h2>Корзина</h2>
+    <!-- Перечисление валютных корзин -->
+    <div data-ng-repeat="(key, value) in basket">
+    <h3>Товары в '{{key}}'</h3>
+        <table>
+                <tbody>
+                    <!-- Перечисление товаров в корзине -->
+                    <tr data-ng-repeat="product in basket[key] track by $index">
+                        <td>{{getProducts()[product].name}}</td>
+                        <td>{{getProducts()[product].price}}</td>
+                        <td>{{getProducts()[product].currency}}</td>
+                    </tr>
+                    <tr>
+                    <td>Total</td>
+                    <td>{{getTotal(key)}}</td>
+                    <td>{{key}}</td>
+                    </tr> 
+                </tbody>
+        </table>
+        <button ng-click="purchase(key)">Оформить заказ</button>
+    </div>
+</body>

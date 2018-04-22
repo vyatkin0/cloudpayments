@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html data-ng-app="storeV">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StoreVyatkin</title>
+    <script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script asp-src-include="/js/*.js" asp-src-exclude=".*.js"></script>
+    <script>
+        var products_url= '@Url.Action("List","Products")';
+        var reservations_url= '@Url.Action("Get","Reservations")';
+    </script>
+</head>
+@RenderBody()
+</html>
