@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿//Файл содержит код инициализации сервера для MVC приложения
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace StoreVyatkin

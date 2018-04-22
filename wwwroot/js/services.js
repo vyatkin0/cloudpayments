@@ -23,7 +23,8 @@ storeV.service("basketService", function (productsService) {
 
 	/**
      * Корзина товаров
-     * Для каждой валюты в объект добавляется массив индексов добавленных товаров из списка товаров 
+     * Для каждой валюты в объект добавляется массив индексов добавленных товаров из списка товаров
+	 * Индексы в массиве могут дублироваться, если добавлено несколько одинаковых товаров
      */
 	this.basket = {};
 
@@ -90,6 +91,7 @@ storeV.service("basketService", function (productsService) {
      * Получает список идентификаторов товаров в корзине в указанной валюте
      * @param {String} currency - валюта для которой требуется получить список товаров
      * @returns {number[]} массив идентификаторов товаров в корзине в указанной валюте
+	 *                     идентификаторы в массиве могут дублироваться, если добавлено несколько одинаковых товаров
      */
 	this.getProducts = function (currency)
 	{
@@ -125,7 +127,7 @@ storeV.service("orderService", function (basketService, $http) {
 
 	/**
      * Подтверждает оплату заказа для корзины в указанной валюте 
-     * @param {String} reservId - идентификатор заказа
+     * @param {number} reservId - идентификатор заказа
      * @param {String} currency - валюта корзины
      * @param {Object} payment - данные платежа, полученный от платежного сервиса
      */
@@ -144,7 +146,7 @@ storeV.service("orderService", function (basketService, $http) {
 
 	/**
      * Отменяет заказ 
-     * @param {String} reservId - идентификатор заказа
+     * @param {number} reservId - идентификатор заказа
      */
 	var cancel = function(reservId)
 	{
@@ -159,7 +161,7 @@ storeV.service("orderService", function (basketService, $http) {
 
 	/**
      * Осуществляет оплату заказа для корзины в указанной валюте 
-     * @param {String} reservId - идентификатор заказа
+     * @param {number} reservId - идентификатор заказа
      * @param {String} currency - валюта корзины
      */
 	var pay = function(reservId, currency)
@@ -171,7 +173,7 @@ storeV.service("orderService", function (basketService, $http) {
 			description: "Пример оплаты (деньги сниматься не будут)", //назначение
 			amount: amount,
 			currency: currency,
-			invoiceId: reservId
+			invoiceId: reservId.toString()
 		},
 		function (options) { // success 
 			//действие при успешной оплате

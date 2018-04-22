@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿//Файл содержит код конфигурации MVC приложения
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using StoreVyatkin.Models;

@@ -3,14 +3,18 @@ using System.Threading.Tasks;
 
 namespace StoreVyatkin.Models
 {
+    //Класс реализации объекта для работы с заказами 
     public class ReservationRepository : IReservationRepository
     {
+        //Коллекция заказов
         private Dictionary<int, Reservation> items;
         public ReservationRepository()
         {
             items = new Dictionary<int, Reservation>();
         }
 
+        // Методы интерфейса IReservationRepository
+        
         public Reservation this[int id] => items.ContainsKey(id) ? items[id] : null;
         public IEnumerable<KeyValuePair<int,Reservation>> Reservations => items;
         public int AddReservation(Reservation reservation)

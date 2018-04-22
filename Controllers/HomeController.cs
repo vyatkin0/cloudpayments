@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using StoreVyatkin.Models;
-using System.Linq;
 
 namespace StoreVyatkin.Controllers
 {
+    // Класс объекта контроллера домашней страницы
     public class HomeController : Controller
     {
+        // Генерирует домашнюю страницу /Home/Index
         public IActionResult Index() {
             return View();
         }
