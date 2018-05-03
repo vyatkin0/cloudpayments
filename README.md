@@ -1,6 +1,7 @@
 # cloudpayments
-Example of an online store that accepts paymets using russian cloudservice.ru service
-Solution is based on ASN.NET CORE, EF Core and AngularJS.
+Example of an online store that accepts paymets using russian cloudservice.ru service.
+
+Solution is based on ASN.NET CORE, EF Core, and AngularJS.
 
 These are generic installation instructions.
 1. Edit database connection string in file appsettings.json
